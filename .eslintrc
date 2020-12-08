@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "oclif",
+    "oclif-typescript",
+    "plugin:prettier/recommended",
+    "prettier/standard",
+    "prettier/@typescript-eslint"
+  ]
+}
