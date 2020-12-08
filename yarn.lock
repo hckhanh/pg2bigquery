@@ -166,6 +166,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.17.48.tgz#726e7f25d00bf58d79c8f00dd586dd9a10d06a4f"
   integrity sha512-Agl6xbYP6FOMDeAsr3QVZ+g7Yzg0uhPHWx0j5g4LFdUBHVtqtU+gH660k/lCEe506jJLOGbEzsnqPDTZGJQLag==
 
+"@types/sql-formatter@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@types/sql-formatter/-/sql-formatter-2.3.0.tgz#d2584c54f865fd57a7fe7e88ee8ed3623b23da33"
+  integrity sha512-Xh9kEOaKWhm3vYD5lUjYFFiSfpN4y3/iQCJUAVwFaQ1rVvHs4WXTa5C8E7gyF3kxwsMS8KgttW7WBAPtFlsvAg==
+
 "@typescript-eslint/eslint-plugin@^2.6.1":
   version "2.34.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-2.34.0.tgz#6f8ce8a46c7dea4a6f1d171d2bb8fbae6dac2be9"
@@ -1338,7 +1343,7 @@ lodash.zip@^4.2.0:
   resolved "https://registry.yarnpkg.com/lodash.zip/-/lodash.zip-4.2.0.tgz#ec6662e4896408ed4ab6c542a3990b72cc080020"
   integrity sha1-7GZi5IlkCO1KtsVCo5kLcswIACA=
 
-lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15:
+lodash@^4.16.0, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
@@ -1593,7 +1598,7 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^2.2.1:
+prettier@2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"
   integrity sha512-PqyhM2yCjg/oKkFPtTGUojv7gnZAoG80ttl45O6x2Ug/rMJw4wcc9k6aaf2hibP7BGVCCM33gZoGjyvt9mm16Q==
@@ -1850,6 +1855,13 @@ sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
+
+sql-formatter@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/sql-formatter/-/sql-formatter-2.3.3.tgz#910ef484fbb988a5e510bea4161157e3b80b2f62"
+  integrity sha512-m6pqVXwsm9GkCHC/+gdPvNowI7PNoVTT6OZMWKwXJoP2MvfntfhcfyliIf4/QX6t+DirSJ6XDSiSS70YvZ87Lw==
+  dependencies:
+    lodash "^4.16.0"
 
 string-width@^2.1.0, string-width@^2.1.1:
   version "2.1.1"
