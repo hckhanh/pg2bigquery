@@ -3,30 +3,92 @@ pg2bigquery
 
 A CLI tool to convert query from PostgreSQL to BigQuery
 
+![Release](https://github.com/hckhanh/pg2bigquery/workflows/Release/badge.svg)
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/pg2bigquery.svg)](https://npmjs.org/package/pg2bigquery)
 [![Downloads/week](https://img.shields.io/npm/dw/pg2bigquery.svg)](https://npmjs.org/package/pg2bigquery)
 [![License](https://img.shields.io/npm/l/pg2bigquery.svg)](https://github.com/hckhanh/pg2bigquery/blob/master/package.json)
 
-<!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
-<!-- tocstop -->
-# Usage
-<!-- usage -->
-```sh-session
-$ npm install -g pg2bigquery
-$ pg2bigquery COMMAND
-running command...
-$ pg2bigquery (-v|--version|version)
-pg2bigquery/0.0.0 win32-x64 node-v14.15.0
-$ pg2bigquery --help [COMMAND]
-USAGE
-  $ pg2bigquery COMMAND
-...
-```
-<!-- usagestop -->
-# Commands
-<!-- commands -->
+# Installation
 
-<!-- commandsstop -->
+For npm:
+
+```shell
+npm i -g pg2bigquery
+```
+
+or yarn:
+
+```shell
+yarn global add pg2bigquery
+```
+
+# Usage
+
+## Requirements
+
+```sh-session
+$ pg2bigquery -d dataset -t tables.json input output
+```
+
+You need these things to use:
+
+* **input**: input folder that contains PostgresSQL query files
+* **output**: output folder that contains BigQuery query files
+* **dataset**: destination dataset which is used to run BigQuery query
+* **tables**: list of tables of pg database in json file
+
+### Tables JSON file
+
+For now, you need to put the list of tables in a json file like this:
+
+```json
+[
+  "forms",
+  "roles",
+  "steps",
+  "wards",
+  "people",
+  "staffs",
+  "products"
+]
+```
+
+You can easily get the list of tables in your sql editor by this query:
+
+```sql
+select table_name from information_schema.tables;
+```
+
+You can run `pg2bigquery` with `--help` option to get more details:
+
+```sh-session
+$ pg2bigquery --help
+```
+
+A success run will be:
+
+```sh-session
+$ pg2bigquery -d dataset -t tables.json input output
+checking output folder... done
+getting input files... 10 files
+getting tables... 55 tables
+converting 10 files... done
+```
+
+# Limitations
+
+> [No Silver Bullet](https://en.wikipedia.org/wiki/No_Silver_Bullet).
+>
+> The converted files might not be perfect.
+
+When you use my tool, you will see these cases:
+
+### `No matching signature for operator` (two different types)
+
+```
+No matching signature for operator = for argument types: INT64, STRING. Supported signature: ANY = ANY at [382:44]
+```
+
+BigQuery don't implicit cast one type to another when using with operators (+, -, <, >,...)
+so you have to do it for yourself.
