@@ -1,7 +1,7 @@
 {
   "name": "pg2bigquery",
   "description": "A CLI tool to convert query from PostgreSQL to BigQuery",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "author": "Khánh Hoàng @hckhanh",
   "bin": {
     "pg2bigquery": "./bin/run"
@@ -26,7 +26,8 @@
     "prettier": "2.2.1",
     "rimraf": "^3.0.2",
     "ts-node": "^8",
-    "typescript": "^3.3"
+    "typescript": "^3.3",
+    "semantic-release": "^17.3.0"
   },
   "engines": {
     "node": ">=12"
@@ -49,7 +50,8 @@
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "prepack": "rimraf lib && tsc -b && oclif-dev readme",
     "test": "echo NO TESTS",
-    "version": "oclif-dev readme && git add README.md"
+    "version": "oclif-dev readme && git add README.md",
+    "semantic-release": "semantic-release"
   },
   "types": "lib/index.d.ts"
 }
