@@ -14,6 +14,16 @@ class Pg2Bigquery extends Command {
       char: "c",
       description: "clean output folder before converting files",
     }),
+    dataset: flags.string({
+      char: "d",
+      required: true,
+      description: "destination dataset name in BigQuery database",
+    }),
+    tables: flags.string({
+      char: "t",
+      required: true,
+      description: "path to a file contains list of tables (in json format)",
+    }),
   };
 
   static args = [
@@ -28,44 +38,41 @@ class Pg2Bigquery extends Command {
       required: true,
       description: "output path to BigQuery folder contains query files",
     },
-    {
-      name: "dataset",
-      required: true,
-      description: "destination dataset name in BigQuery database",
-    },
-    {
-      name: "tables",
-      required: true,
-      description: "path to list of tables (in json format)",
-      default: "tables.json",
-    },
   ];
 
   async run() {
     const { args, flags } = this.parse(Pg2Bigquery);
     const input = path.resolve(args.input);
-    const tables = path.resolve(args.tables);
+    const tables = path.resolve(flags.tables);
     const output = path.resolve(args.output);
 
     // create output folder
+    cli.action.start("checking output folder");
     await fs.mkdir(output, { recursive: true });
+    cli.action.stop();
 
-    flags.clean && (await cleanUp(output));
+    if (flags.clean) {
+      cli.action.start("cleaning output folder");
+      await cleanUp(output);
+      cli.action.stop();
+    }
 
     // get all input files
-    cli.action.start("get input files");
+    cli.action.start("getting input files");
     const files = await fs.readdir(input);
     cli.action.stop(`${files.length} files`);
 
     // get table regexes
+    cli.action.start("getting tables");
     const tableRegexes = await getTableRegexes(tables);
+    cli.action.stop(`${tableRegexes.length} tables`);
 
     // convert all files
-    cli.action.start(`convert ${files.length} files`);
+    cli.action.start(`converting ${files.length} files`);
     const filePromises = [];
     for (const file of files) {
       filePromises.push(
-        convertFile(file, input, output, args.dataset, tableRegexes)
+        convertFile(file, input, output, flags.dataset, tableRegexes)
       );
     }
 
