@@ -70,10 +70,10 @@ A success run will be:
 
 ```sh-session
 $ pg2bigquery -d dataset -t tables.json input output
-checking output folder... done
-getting input files... 10 files
-getting tables... 55 tables
-converting 10 files... done
+check output folder... done
+get input files... 10 files
+get tables... 55 tables
+convert 10 files... done
 ```
 
 # Limitations
