@@ -30,8 +30,7 @@ class Pg2Bigquery extends Command {
     {
       name: "input",
       required: true,
-      description:
-        "input path to PostgresSQL file or folder contains query files",
+      description: "input path to folder contains PostgresSQL query files",
     },
     {
       name: "output",
@@ -51,28 +50,28 @@ class Pg2Bigquery extends Command {
     }
 
     // create output folder
-    cli.action.start("checking output folder");
+    cli.action.start("check output folder");
     await fs.mkdir(output, { recursive: true });
     cli.action.stop();
 
     if (flags.clean) {
-      cli.action.start("cleaning output folder");
+      cli.action.start("clean output folder");
       await cleanUp(output);
       cli.action.stop();
     }
 
     // get all input files
-    cli.action.start("getting input files");
+    cli.action.start("get input files");
     const files = await fs.readdir(input);
     cli.action.stop(`${files.length} files`);
 
     // get table regexes
-    cli.action.start("getting tables");
+    cli.action.start("get tables");
     const tableRegexes = await getTableRegexes(tables);
     cli.action.stop(`${tableRegexes.length} tables`);
 
     // convert all files
-    cli.action.start(`converting ${files.length} files`);
+    cli.action.start(`convert ${files.length} files`);
     const filePromises = [];
     for (const file of files) {
       filePromises.push(
