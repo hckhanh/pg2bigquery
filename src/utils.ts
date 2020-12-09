@@ -9,7 +9,7 @@ async function cleanPath(dir: string, file: string) {
   if (stat.isFile()) {
     await fs.unlink(filePath);
   } else if (stat.isDirectory()) {
-    await fs.rmdir(filePath);
+    await fs.rm(filePath, { recursive: true, force: true });
   }
 }
 
