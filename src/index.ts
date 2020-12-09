@@ -46,6 +46,10 @@ class Pg2Bigquery extends Command {
     const tables = path.resolve(flags.tables);
     const output = path.resolve(args.output);
 
+    if (input === output) {
+      cli.error("input and output cannot be the same path");
+    }
+
     // create output folder
     cli.action.start("checking output folder");
     await fs.mkdir(output, { recursive: true });
