@@ -46,7 +46,7 @@ function convertTimeCalculations(query: string): string {
         return `TIMESTAMP_${operator}(CURRENT_TIMESTAMP(), INTERVAL ${matches[3]} DAY)`;
       }
 
-      return substring;
+      throw new Error(`Cannot parse "${substring}"`);
     }
   );
 
@@ -67,7 +67,8 @@ function removeQuotesForNumber(query: string): string {
     if (matches) {
       return matches[1];
     }
-    return substring;
+
+    throw new Error(`Cannot parse "${substring}"`);
   });
 }
 
@@ -79,7 +80,8 @@ function convertDatePartFunction(query: string): string {
       if (matches) {
         return `EXTRACT(${matches[1].toUpperCase()} FROM ${matches[2]})`;
       }
-      return substring;
+
+      throw new Error(`Cannot parse "${substring}"`);
     }
   );
 }
@@ -92,7 +94,8 @@ function castElseCaseToString(query: string): string {
       if (matches) {
         return `ELSE CAST(${matches[1]} AS STRING)`;
       }
-      return substring;
+
+      throw new Error(`Cannot parse "${substring}"`);
     }
   );
 }
