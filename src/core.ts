@@ -110,5 +110,5 @@ export function postgres2Bigquery(
   bQuery = convertDatePartFunction(bQuery);
   bQuery = castElseCaseToString(bQuery);
 
-  return bQuery;
+  return sqlFormatter.format(bQuery);
 }
