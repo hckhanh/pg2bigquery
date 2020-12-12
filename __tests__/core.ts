@@ -15,13 +15,13 @@ describe("core", () => {
     const query = `
       SELECT created_at::date AS start_date
       FROM users
-      WHERE role = 'admin'::text;
+      WHERE users.role = 'admin'::text;
     `;
 
     const expectedQuery = `
       SELECT created_at AS start_date
       FROM demo_dataset.users
-      WHERE role = 'admin';
+      WHERE users.role = 'admin';
     `;
 
     const bQuery = postgres2Bigquery(query, "demo_dataset", tableRegexes);
