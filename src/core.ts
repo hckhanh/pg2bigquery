@@ -37,9 +37,9 @@ function addPrefixDatasetToTables(
 
 function convertTimeCalculations(query: string): string {
   query = query.replace(
-    /(\('now'\)|'now') ([+-]) (\d+)/g,
+    /(\('now'\)|'now') ([+-])\s?(\d+)/g,
     function (substring: string) {
-      const matches = substring.match(/(\('now'\)|'now') ([+-]) (\d+)/);
+      const matches = substring.match(/(\('now'\)|'now') ([+-])\s?(\d+)/);
 
       if (matches) {
         const operator = timeOperators[matches[2]];
