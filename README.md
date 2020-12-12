@@ -4,6 +4,7 @@ pg2bigquery
 A CLI tool to convert query from PostgreSQL to BigQuery
 
 ![Release](https://github.com/hckhanh/pg2bigquery/workflows/Release/badge.svg)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/hckhanh/pg2bigquery.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/hckhanh/pg2bigquery/context:javascript)
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/pg2bigquery.svg)](https://npmjs.org/package/pg2bigquery)
 [![Downloads/week](https://img.shields.io/npm/dw/pg2bigquery.svg)](https://npmjs.org/package/pg2bigquery)
