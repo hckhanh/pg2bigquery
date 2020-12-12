@@ -61,7 +61,7 @@ function convertCheckAllInArrays(query: string): string {
   return query.replace(/ <> ALL /gi, " NOT IN UNNEST ");
 }
 
-function wrapNumbersWithBrackets(query: string): string {
+function removeQuotesForNumber(query: string): string {
   return query.replace(/'\d+'/g, function (substring: string) {
     const matches = substring.match(/'(\d+)'/);
     if (matches) {
@@ -84,7 +84,7 @@ function convertDatePartFunction(query: string): string {
   );
 }
 
-function convertExtractFunction(query: string): string {
+function castElseCaseToString(query: string): string {
   return query.replace(/ELSE \(EXTRACT \(.+/gi, function (substring: string) {
     const matches = substring.match(/ELSE (.+)/);
     if (matches) {
@@ -106,9 +106,9 @@ export function postgres2Bigquery(
   bQuery = convertTimeCalculations(bQuery);
   bQuery = convertFindAnyInArrays(bQuery);
   bQuery = convertCheckAllInArrays(bQuery);
-  bQuery = wrapNumbersWithBrackets(bQuery);
+  bQuery = removeQuotesForNumber(bQuery);
   bQuery = convertDatePartFunction(bQuery);
-  bQuery = convertExtractFunction(bQuery);
+  bQuery = castElseCaseToString(bQuery);
 
   return bQuery;
 }
