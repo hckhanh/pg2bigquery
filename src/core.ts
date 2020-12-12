@@ -85,13 +85,16 @@ function convertDatePartFunction(query: string): string {
 }
 
 function castElseCaseToString(query: string): string {
-  return query.replace(/ELSE \(EXTRACT \(.+/gi, function (substring: string) {
-    const matches = substring.match(/ELSE (.+)/);
-    if (matches) {
-      return `ELSE CAST(${matches[1]} AS STRING)`;
+  return query.replace(
+    /ELSE \(?EXTRACT\(.+\)?/gi,
+    function (substring: string) {
+      const matches = substring.match(/ELSE \(?(.+)\)?/);
+      if (matches) {
+        return `ELSE CAST(${matches[1]} AS STRING)`;
+      }
+      return substring;
     }
-    return substring;
-  });
+  );
 }
 
 export function postgres2Bigquery(
