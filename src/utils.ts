@@ -1,26 +1,25 @@
-import { promises as fs } from "fs";
+import { Dirent, promises as fs } from "fs";
 import path from "path";
 import { postgres2Bigquery } from "./core";
 
-async function cleanPath(dir: string, file: string) {
-  const filePath = path.join(dir, file);
-  const stat = await fs.stat(filePath);
+async function cleanPath(dir: string, dirent: Dirent) {
+  const filePath = path.join(dir, dirent.name);
 
-  if (stat.isFile()) {
+  if (dirent.isFile()) {
     await fs.unlink(filePath);
-  } else if (stat.isDirectory()) {
+  } else if (dirent.isDirectory()) {
     await fs.rm(filePath, { recursive: true, force: true });
   }
 }
 
 export async function cleanUp(dir: string) {
-  const files = await fs.readdir(dir);
-  const filePromises = [];
-  for (const file of files) {
-    filePromises.push(cleanPath(dir, file));
+  const dirents = await fs.readdir(dir, { withFileTypes: true });
+  const direntPromises = [];
+  for (const dirent of dirents) {
+    direntPromises.push(cleanPath(dir, dirent));
   }
 
-  await Promise.all(filePromises);
+  await Promise.all(direntPromises);
 }
 
 export async function convertFile(
