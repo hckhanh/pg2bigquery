@@ -73,9 +73,9 @@ function removeQuotesForNumber(query: string): string {
 
 function convertDatePartFunction(query: string): string {
   return query.replace(
-    /date_part\('\w+', [\w.]+\)/gi,
+    /date_part\s?\('\w+', [\w.]+\)/gi,
     function (substring: string) {
-      const matches = substring.match(/date_part\('(\w+)', ([\w.]+)\)/);
+      const matches = substring.match(/date_part\s?\('(\w+)', ([\w.]+)\)/);
       if (matches) {
         return `EXTRACT(${matches[1].toUpperCase()} FROM ${matches[2]})`;
       }
