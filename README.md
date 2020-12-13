@@ -39,6 +39,8 @@ You need these things to use:
 * **dataset**: destination dataset which is used to run BigQuery query
 * **tables**: list of tables of pg database in json file
 
+> If you want to know about the files format, go to [samples](samples)
+
 ### Tables JSON file
 
 For now, you need to put the list of tables in a json file like this:
@@ -61,7 +63,7 @@ You can easily get the list of tables in your sql editor by this query:
 select table_name from information_schema.tables;
 ```
 
-You can run `pg2bigquery` with `--help` option to get more details:
+Run `pg2bigquery` with `--help` option to get more details:
 
 ```sh-session
 $ pg2bigquery --help
