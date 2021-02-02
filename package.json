@@ -12,7 +12,7 @@
     "@oclif/config": "^1.17.0",
     "@oclif/plugin-help": "^3.2.0",
     "cli-ux": "^5.5.1",
-    "sql-formatter": "^2.3.3",
+    "sql-formatter": "^4.0.1",
     "tslib": "^2.0.3"
   },
   "devDependencies": {
