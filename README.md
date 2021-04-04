@@ -1,5 +1,4 @@
-pg2bigquery
-===========
+# pg2bigquery
 
 A CLI tool to convert query from PostgreSQL to BigQuery
 
@@ -34,10 +33,10 @@ $ pg2bigquery -d dataset -t tables.json input output
 
 You need these things to use:
 
-* **input**: input folder that contains PostgresSQL query files
-* **output**: output folder that contains BigQuery query files
-* **dataset**: destination dataset which is used to run BigQuery query
-* **tables**: list of tables of pg database in json file
+- **input**: input folder that contains PostgresSQL query files
+- **output**: output folder that contains BigQuery query files
+- **dataset**: destination dataset which is used to run BigQuery query
+- **tables**: list of tables of pg database in json file
 
 > If you want to know about the files format, go to [samples](samples)
 
@@ -46,15 +45,7 @@ You need these things to use:
 For now, you need to put the list of tables in a json file like this:
 
 ```json
-[
-  "forms",
-  "roles",
-  "steps",
-  "wards",
-  "people",
-  "staffs",
-  "products"
-]
+["forms", "roles", "steps", "wards", "people", "staffs", "products"]
 ```
 
 You can easily get the list of tables in your sql editor by this query:

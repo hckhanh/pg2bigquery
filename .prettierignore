@@ -1,0 +1,14 @@
+# Builds
+lib
+dist
+build
+
+# Test
+coverage
+
+# Misc
+te?mp
+
+# Yarn
+.yarn
+.pnp.*
