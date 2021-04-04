@@ -1,4 +1,4 @@
-import sqlFormatter from "sql-formatter";
+import { format } from "sql-formatter";
 import { dataTypeRegexes } from "./postgres";
 
 const timeOperators: { [operator: string]: string } = {
@@ -105,7 +105,7 @@ export function postgres2Bigquery(
   dataset: string,
   tableRegexes: RegExp[]
 ): string {
-  let bQuery = sqlFormatter.format(pgQuery);
+  let bQuery = format(pgQuery, { language: "postgresql" });
 
   bQuery = removeTypeCasts(bQuery);
   bQuery = addPrefixDatasetToTables(tableRegexes, bQuery, dataset);
@@ -116,5 +116,5 @@ export function postgres2Bigquery(
   bQuery = convertDatePartFunction(bQuery);
   bQuery = castElseCaseToString(bQuery);
 
-  return sqlFormatter.format(bQuery);
+  return format(bQuery);
 }

@@ -2,6 +2,7 @@
 
 A CLI tool to convert query from PostgreSQL to BigQuery
 
+[![deepcode](https://www.deepcode.ai/api/gh/badge?key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF0Zm9ybTEiOiJnaCIsIm93bmVyMSI6Imhja2hhbmgiLCJyZXBvMSI6InBnMmJpZ3F1ZXJ5IiwiaW5jbHVkZUxpbnQiOmZhbHNlLCJhdXRob3JJZCI6Mjg0MzQsImlhdCI6MTYxNzQ5NzY2MX0.RKs5KwUX_1aAQz-K1LyWD7HvjGi3zcIHhb-CVdZckE4)](https://www.deepcode.ai/app/gh/hckhanh/pg2bigquery/_/dashboard?utm_content=gh%2Fhckhanh%2Fpg2bigquery)
 ![Release](https://github.com/hckhanh/pg2bigquery/workflows/Release/badge.svg)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/hckhanh/pg2bigquery.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/hckhanh/pg2bigquery/context:javascript)
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
